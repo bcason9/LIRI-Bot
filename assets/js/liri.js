@@ -1,6 +1,7 @@
 require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api")
+var fs = require("fs");
 
 
 let axios = require("axios");
@@ -61,6 +62,18 @@ const movieThis = function() {
   });
 };
 
+const readThis = function() {
+    fs.readFile("../random.txt", "utf8", function(error, data) {
+        if (error) {
+            return console.log(error);
+        }
+
+       // console.log(data);
+        userQuery = data;
+        spotifyThis(userQuery);
+    })
+}
+
 function userPrompt(userFunction) {
     switch(userFunction) {
         case "spotify-this":
@@ -71,6 +84,9 @@ function userPrompt(userFunction) {
         break;
         case "movie-this":
         movieThis();
+        break;
+        case "do-what-it-says":
+        readThis();
         break;
         default: console.log("I don't understand...");
     }
