@@ -13,7 +13,7 @@ This application requires several node packages, including:
 
 
 ## Usage
-Uses 'node liri.js <command> <search term> to execute commands
+Uses node liri.js + command + search term to execute commands
 
 ## Visuals
 
